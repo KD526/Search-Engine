@@ -1,7 +1,25 @@
-use std::fs;
+use std::fs::File;
+use std::process::exit;
+use xml::reader::{XmlEvent, EventReader};
 
 fn main() {
-    let file_path = "docs.,gl/gl4/glClear>xhtml";
-    fs::read_tO_string(file_path);
-    println!("open file!");
+    let file_path = "docs.,gl/gl4/glClear.xhtml";
+    let file = File::open("docs.,gl/gl4/glClear.xhtml").unwrap_or_else(|err| {
+        eprintln!("ERROR: Could not read file {file_path}: {err}");
+        exit(1)
+    });
+    let er = EventReader::new(file);
+
+    let mut content = String::new();
+
+    for event in er.into_iter() {
+        let event = event.unwrap_or_else(|err| {
+            eprintln!("ERROR: Could not read file {file_path}: {err}");
+            exit(1) 
+        });
+        if let XmlEvent::Characters(text) = event {
+            content.push_str(&text);
+        }
+    }
+    println!("{content}");
 }
