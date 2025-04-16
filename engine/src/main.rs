@@ -57,6 +57,7 @@ fn read_entire_xml_file<P: AsRef<Path>>(file_path: P) -> io::Result<String> {
 
 }
 
+//read from file system
 fn main() -> io::Result<()> {
     let content = read_entire_xml_file("docs.gl/gl4/glVertexAttribDivisor.xhhtml")?.chars().collect::<Vec<_>>();
     for token in Lexer::new(&content) {
