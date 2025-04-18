@@ -41,7 +41,7 @@ fn index_doc(_doc_content: &str) -> HashMap<String, usize> {
     todo!("not implemented");
 
 }
-
+///Read xml
 fn read_entire_xml_file<P: AsRef<Path>>(file_path: P) -> io::Result<String> {
     let file = File::open(file_path)?;
     let er = EventReader::new(file);
