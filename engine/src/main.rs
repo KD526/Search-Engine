@@ -66,16 +66,16 @@ fn main() -> io::Result<()> {
 
     }
     //map to a path to a file and the frequency of terms within a file
-    // let all_docs = HashMap::<Path, HashMap<String, usize>>::new();    
-    // let dir_path = "docs.,gl/gl4";
-    // let dir = fs::read_dir(dir_path)?;
-    // for file in dir {
-    //     let file_path = file?.path();
-    //     let content = read_entire_xml_file(&file_path)?;
-    //     println!("{file_path:?} => {size}", size = &content.len());
-    // }
+    let all_docs = HashMap::<Path, HashMap<String, usize>>::new();    
+    let dir_path = "docs.,gl/gl4";
+    let dir = fs::read_dir(dir_path)?;
+    for file in dir {
+        let file_path = file?.path();
+        let content = read_entire_xml_file(&file_path)?;
+        println!("{file_path:?} => {size}", size = &content.len());
+    }
     
-   //println!("{content}"), content = read_entire_xml_file(file_path).expect("");
+   println!("{content}"), content = read_entire_xml_file(file_path).expect("");
    Ok(())
 }
 
